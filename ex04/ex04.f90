@@ -5,5 +5,3 @@ program ex04
     implicit none
 
 end program
-
-!aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
