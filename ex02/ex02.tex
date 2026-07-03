@@ -1,0 +1,37 @@
+\documentclass[dvipdfmx]{jsarticle}
+
+\usepackage{amsmath,mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=Fortran,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=10pt,
+    frame=single,
+    breaklines=true,
+    tabsize=4,
+    showstringspaces=false
+}
+
+\title{計算機ゼミ 課題2}
+
+\author{石川曹太}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{コード}
+\lstinputlisting[language = Fortran] {ex02.f90}
+
+\end{document}
