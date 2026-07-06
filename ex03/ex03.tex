@@ -6,6 +6,7 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{indentfirst}
 
 \lstset{
     language=Fortran,
@@ -36,6 +37,177 @@
 
 \lstinputlisting[language = Fortran, caption={線形ソルバーモジュール}, label={lst:code2}]{mod_linear_solver_lu.f90}
 
+
 \section{LU分解の説明}
+
 \subsection{LU分解とは}
+LU分解とは，ある正方行列$\boldsymbol{A}$を下三角行列$\boldsymbol{L}$と上三角行列$\boldsymbol{U}$の積に分解する手法である．これは数値解析において最も基本的な行列分解の一つであり，連立一次方程式の求解や逆行列の計算など，多くの数値計算で利用されている.
+
+\begin{align}
+    \boldsymbol{A}=\boldsymbol{LU}
+\end{align}
+
+下三角行列とは行列の下半分の三角部分にのみ非ゼロの要素が存在し，上半分の三角部分は全てゼロであるという行列である．一方で上三角行列は逆に，上半分の三角部分のみ非ゼロで，下半分はゼロであるという行列のことである．
+
+\begin{align}
+    \boldsymbol{L}=
+    \begin{bmatrix}
+        1 & 0 & 0 & \dots & 0 \\
+        l_{21} & 1 & 0 & \dots & 0 \\
+        l_{31} & l_{32} & 1 & \dots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & 0 \\
+        l_{n1} & l_{n2} & l_{n3} & \dots & 1 \\
+    \end{bmatrix}
+\end{align}
+
+\begin{align}
+    \boldsymbol{U}=
+    \begin{bmatrix}
+        u_{11} & u_{12} & u_{13} & \dots & u_{1n} \\
+        0 & u_{22} & u_{23} & \dots & u_{2n} \\
+        0 & 0 & u_{33} & \dots & u_{3n} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & 0 & u_{nn}
+    \end{bmatrix}
+\end{align}
+
+ここでは各行列を一意的に決めるために，今回のレポートでは行列$\boldsymbol{L}$の対角成分は全て1としている．\\
+
+LU分解を用いると，一度分解を行うだけで複数の連立一次方程式を効率よく解くことができるため，大規模な数値計算では非常に重要な手法になっている．\\
+
+\subsection{部分ピボット選択}
+実際の数値計算では，単純なLU分解だけでは計算が失敗する場合が存在する．例として，次に示すような行列のLU分解を考える．
+
+\begin{align*}
+    \boldsymbol{A}=
+    \begin{bmatrix}
+        0 & 3 & 1 \\
+        1 & -2 & 3 \\
+        -2 & 1 & 4
+    \end{bmatrix}
+\end{align*}
+
+後の2.3節で示すガウス消去法では行列の対角成分で割るという操作が入るため，この行列の$a_{11}$成分で割ろうとするとゼロ割になって計算ができなくなる．また，対象となる対角要素がゼロでなくとも，他の要素に比べて非常に小さい場合，割り算をすることによって消去法における係数が大きくなってしまい桁落ちなどの数値誤差が生じやすくなってしまうというデメリットがある．そのため例に示した行列の場合，1行目と他の行を交換した行列を考えLU分解を進める必要がある．この時第k列について$\left|a_{ik}\right|$が最大となる行を探索し，その行を第k行と交換してからガウス消去を行う．今回の場合，$a_{31}$要素の-2が一番大きいため，3行目と1行目を交換する．
+
+\begin{align*}
+    \begin{bmatrix}
+        -2 & 1 & 4 \\
+        1 & -2 & 3 \\
+        0 & 3 & 1
+    \end{bmatrix}
+\end{align*}
+
+このような行列の交換操作をピボット選択という．今回の交換のような行列の行のみを入れ替えることを部分ピボット選択(partial pivoting)，行も列も入れ替える操作を完全ピボット選択(full pivoting)という．通常のガウス消去法のみを用いたLU分解とは違い，部分ピボット選択付きLU分解では最終的に行を交換し終えた行列に対して行われる．この行列の行を交換するための変換行列$\boldsymbol{P}$を用いると，
+
+\begin{align}
+    \boldsymbol{PA}=\boldsymbol{LU}
+\end{align}
+
+が成立する．ここでの変換行列$\boldsymbol{P}$は置換行列と呼ばれ．次のように単位行列を行列$\boldsymbol{A}$の入れ替えたい行同士と同じ行で入れ替えた形をしている．
+
+\begin{align*}
+    \boldsymbol{P}=
+    \begin{bmatrix}
+        0 & 0 & 1 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+    \end{bmatrix}
+\end{align*}
+
+置換行列は行の交換を表す行列であり，ピボット探索を行い行交換をするたびに更新される．また，すでに求まっているLの要素にも対応する行を交換する必要があるため，本プログラムではP,U,とLの確定済み部分を同時に交換するものとしている．\\
+
+本プログラムの部分ピボット選択では，$1 \sim n-1$(nは対象とする正方行列の行数)という範囲のkでピボット探索をし，それぞれの探索後にP，U，Lの行交換を行うという操作をループさせている．具体的には$U_{kk}$の数値をmaxの初期値として設定し，k列の他の成分を$U_{ik}$のiループ($k+1 \sim n$)を回して比較することにより，最終的なmaxと，1行目と交換する行の行番号をpivot\_rowとして保存する．\\
+
+その後，maxの存在する行をそれぞれPz,Uz,Lzに格納し，k行目との交換を行う．ただ，Lに関しては確定した対角成分以外を入れ替えるため，行交換が発動する条件$k>1$に設定し，該当箇所のみをLzに格納するものとしている．\\
+
+\subsection{ガウス消去}
+ピボットが決定すると，ガウス消去によって対角成分より下の部分を順番にゼロにしていく操作を行う．行列$\boldsymbol{U}$の成分を$U_{ij}$とし，それぞれループを回すことで全体の成分の計算を行う．ここでガウス消去を行うためにk行以外の行に掛ける係数をfactorとして定義し，以下の式で得る．ここで得たfactorの値は自動的にLの下三角成分に格納される．
+
+\begin{align}
+    factor=\frac{U_{ik}}{U_{kk}}=l_{ik}
+\end{align}
+
+その後，各行各列に以下の計算を行うことで対象とするk列の対角成分の下の部分がゼロになった行列を得ることができる．
+
+\begin{align}
+    U_{ij}=U_{ij}-U_{kj}l_{ik}
+\end{align}
+
+本プログラムではこれまでに説明したピボット選択とガウス消去をそれぞれサブルーチンとして作成し，LU分解という一つのサブルーチンにまとめて格納したうえでkのループを回している．この二つの操作の繰り返しによって最終的に$\boldsymbol{PA}=\boldsymbol{LU}$を満たすような行列$\boldsymbol{L}$，$\boldsymbol{U}$が得られるコードになっている．\\
+
+\subsection{下三角行列の逆行列}
+LU分解の終了後，まず下三角行列$\boldsymbol{L}$の逆行列を求める．その逆行列を一旦$\boldsymbol{X}$と置くと，以下の関係を満たす．
+
+\begin{align}
+    \boldsymbol{LX}=\boldsymbol{I}
+\end{align}
+
+\begin{align}
+    \begin{bmatrix}
+        L_{11} & 0 & 0 \\
+        L_{21} & L_{22} & 0 \\
+        L_{31} & L_{32} & L_{33}
+    \end{bmatrix}
+    \begin{bmatrix}
+        X_{11} & X_{12} & X_{13} \\
+        X_{21} & X_{22} & X_{23} \\
+        X_{31} & X_{32} & X_{33}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{align}
+
+この等式を成分で書き下すと，
+
+\begin{equation}
+    \left\{ \,
+        \begin{aligned}
+            & L_{11}X_{11}=1 \\
+            & L_{21}X_{11}+L_{22}X_{21}=0 \\
+            & L_{31}X_{11}+L_{32}X_{21}+L_{33}X_{31}=0
+        \end{aligned}
+    \right.
+    \left\{ \,
+        \begin{aligned}
+            & L_{11}X_{12}=0 \\
+            & L_{21}X_{12}+L_{22}X_{22}=1 \\
+            & L_{31}X_{12}+L_{32}X_{22}+L_{33}X_{32}=0
+        \end{aligned}
+    \right.
+    \left\{ \,
+        \begin{aligned}
+            & L_{11}X_{13}=0 \\
+            & L_{21}X_{13}+L_{22}X_{23}=0 \\
+            & L_{31}X_{13}+L_{32}X_{23}+L_{33}X_{33}=1
+        \end{aligned}
+    \right.
+\end{equation}
+
+となる．ここで，$\boldsymbol{L}$の成分は確定しているから，一番上の式からXの値を求めて順次代入していけば簡単にすべての未知数Xを求めることができる．この計算方法を前進代入という．行列$\boldsymbol{X}$の対角より上の成分は$U_{11}$がゼロでないことを考慮するとゼロであると求められる．\\
+
+次に対角成分は，以下の式で計算可能である．
+
+\begin{align}
+    X_{jj}=\frac{1}{L_{jj}}
+\end{align}
+
+最後に，対角より下の成分は式(9)より，以下のように求められる．
+
+\begin{align}
+    X_{ij}=-\frac{\sum_{k=1}^{i-1}L_{ik}X_{kj}}{L_{ii}}
+\end{align}
+
+今回は，列ごとに切り分けて考えるため，列を表すjを$1 \sim m$(mは行列の列サイズ)でループさせて，その中で考慮する対角以下の成分を，行を表すiを用いて$j+1 \sim n$(nは行列の行サイズ)でループさせる．またそれぞれの成分ごとの積の和を保存するためにsという変数を導入し，随時更新していくことで式(11)の分子を確定させる．\\
+
+\subsection{上三角行列の逆行列}
+
+
+
+
+
+
 \end{document}
