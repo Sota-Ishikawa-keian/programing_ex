@@ -172,4 +172,16 @@ INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
+INPUT ./ex03case1.png
+INPUT ./ex03case1.png
+INPUT ./ex03case1.png
+INPUT extractbb -B cropbox -O ex03case1.png
+INPUT ./ex03case2.png
+INPUT ./ex03case2.png
+INPUT ./ex03case2.png
+INPUT extractbb -B cropbox -O ex03case2.png
+INPUT ./ex03case3.png
+INPUT ./ex03case3.png
+INPUT ./ex03case3.png
+INPUT extractbb -B cropbox -O ex03case3.png
 INPUT ex03.aux

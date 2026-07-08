@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.uptex) (TeX Live 2026) (preloaded format=uplatex 2026.5.27)  7 JUL 2026 17:01
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.uptex) (TeX Live 2026) (preloaded format=uplatex 2026.5.27)  8 JUL 2026 15:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -322,7 +322,14 @@ Overfull \hbox (2.15126pt too wide) detected at line 188
 [][] [] []
  []
 
-[9] [10] [11] (./ex03.aux)
+[9] [10]
+File: ex03case1.png Graphic file (type bmp)
+<ex03case1.png>
+File: ex03case2.png Graphic file (type bmp)
+<ex03case2.png>
+File: ex03case3.png Graphic file (type bmp)
+<ex03case3.png>
+ [11] [12] (./ex03.aux)
  ***********
 pLaTeX2e <2023-02-14u04>+1, based on
 LaTeX2e <2025-11-01>
@@ -330,12 +337,12 @@ L3 programming layer <2026-05-15>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5621 strings out of 467986
- 80273 string characters out of 5430830
+ 5649 strings out of 467986
+ 80826 string characters out of 5430830
  976813 words of memory out of 5000000
- 34665 multiletter control sequences out of 15000+600000
+ 34685 multiletter control sequences out of 15000+600000
  648135 words of font info for 136 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  57i,16n,65p,990b,2199s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ex03.dvi (11 pages, 71732 bytes).
+Output written on ex03.dvi (12 pages, 74632 bytes).

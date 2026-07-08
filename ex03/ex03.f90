@@ -9,16 +9,16 @@ program ex03
     integer :: i
 
     !使い分け
-    integer :: n = 3
-    !integer :: n = 2
+    !integer :: n = 3
+    integer :: n = 2
 
     allocate (A(n, n))
     allocate (Ainv(n, n))
 
     !使い分け
-    A = reshape([1.0d0, -2.0d0, 0.0d0, 1.0d0, 0.0d0, 2.0d0, -1.0d0, 1.0d0, 1.0d0], [n, n])
+    !A = reshape([1.0d0, -2.0d0, 0.0d0, 1.0d0, 0.0d0, 2.0d0, -1.0d0, 1.0d0, 1.0d0], [n, n])
     !A = reshape([0.0d0, 2.0d0, 1.0d0, 1.0d0, 3.0d0, 0.0d0, 0.0d0, 1.0d0, 2.0d0], [n, n])
-    !A = reshape([0.0d0, 2.0d0, 1.0d0, 3.0d0], [n, n])
+    A = reshape([0.0d0, 2.0d0, 1.0d0, 3.0d0], [n, n])
 
     print *, "A ="
     do i = 1, n
