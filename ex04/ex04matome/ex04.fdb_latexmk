@@ -1,17 +1,17 @@
 # Fdb version 4
-["dvipdf"] 1783650468.8378 "ex04.dvi" "ex04.pdf" "ex04" 1783650470.11348 0
-  "ex04.dvi" 1783650468.6746 93268 1a314792f5b8b21863eab3e1d4166903 "latex"
+["dvipdf"] 1783650981.58935 "ex04.dvi" "ex04.pdf" "ex04" 1783650983.12352 0
+  "ex04.dvi" 1783650981.46303 93172 de142641a1b111d79fa2b2ff6ce9af7c "latex"
   (generated)
   "ex04.pdf"
   (rewritten before read)
-["latex"] 1783650466.72631 "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex04/ex04matome/ex04.tex" "ex04.dvi" "ex04" 1783650470.10308 0
+["latex"] 1783650979.35972 "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex04/ex04matome/ex04.tex" "ex04.dvi" "ex04" 1783650983.11559 0
   "../inkaihou/errorin.png" 1783605456.86348 84588 a3e0708f5b94fd10a1c42bc8c357274e ""
   "../inkaihou/inkaihou.f90" 1783577471.04487 3851 90099ff21120e3fa6210fb76c5143eae ""
   "../inkaihou/inkaihou.png" 1783605454.13084 110903 1838d5c6662a4ab1a360122bf185f8a5 ""
   "../youkaihou/erroryou.png" 1783605309.62071 84530 b377cae504b3c087ba435a12bb08eb19 ""
   "../youkaihou/youkaihou.f90" 1783566191.86426 3383 92f258020ec6db1bf97dc455b0b18c00 ""
   "../youkaihou/youkaihou.png" 1783605291.55947 110926 d14fad37e534308a2a102293ea7607da ""
-  "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex04/ex04matome/ex04.tex" 1783650466.53167 22610 0ce6cec70a6a7324ba67f61a7629232e ""
+  "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex04/ex04matome/ex04.tex" 1783650977.02836 22607 63c81b9e2865aeca18088fe9fdc9847f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -90,7 +90,7 @@
   "/usr/local/texlive/2026/texmf-dist/web2c/texmf.cnf" 1770478701 43630 e9fa012910491fe5ae08a72c3c2997a7 ""
   "/usr/local/texlive/2026/texmf-var/web2c/euptex/uplatex.fmt" 1779863856 3654273 bc37f057c8d4fad3987b296d5372254c ""
   "/usr/local/texlive/2026/texmf.cnf" 1779863786.03173 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "ex04.aux" 1783650468.66823 2052 d9c0c12c114e4265ff20fcad810c4756 "latex"
+  "ex04.aux" 1783650981.45852 2047 41bcc98b5ac4d545daa1e6948dadc71a "latex"
   (generated)
   "ex04.aux"
   "ex04.dvi"

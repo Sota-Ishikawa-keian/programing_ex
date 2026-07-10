@@ -158,8 +158,6 @@ INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 OUTPUT ex04.dvi
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-v.tfm
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
 INPUT ../youkaihou/youkaihou.f90
 INPUT ../youkaihou/youkaihou.f90
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisr-v.tfm
