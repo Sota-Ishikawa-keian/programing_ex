@@ -1,11 +1,11 @@
 # Fdb version 4
-["dvipdf"] 1783491818.79907 "ex03.dvi" "ex03.pdf" "ex03" 1783491819.50368 0
-  "ex03.dvi" 1783491818.66552 74632 aaa37686019c12b041ebbd94940cc895 "latex"
+["dvipdf"] 1783578405.02427 "ex03.dvi" "ex03.pdf" "ex03" 1783578405.8998 0
+  "ex03.dvi" 1783578404.85148 74636 6b6fde3c391657a945caf57fb5eafd09 "latex"
   (generated)
   "ex03.pdf"
   (rewritten before read)
-["latex"] 1783491816.81094 "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex03/ex03.tex" "ex03.dvi" "ex03" 1783491819.49761 0
-  "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex03/ex03.tex" 1783491816.58801 14563 7a15cd4af44a71bdc866da1c44d6322f ""
+["latex"] 1783578403.00447 "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex03/ex03.tex" "ex03.dvi" "ex03" 1783578405.89139 0
+  "/home/ishikawa/Desktop/keisanki_semi/programing_ex/ex03/ex03.tex" 1783578402.66874 14566 73c0d614c69e74daccb7b32ec223b6c3 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -83,7 +83,7 @@
   "/usr/local/texlive/2026/texmf-dist/web2c/texmf.cnf" 1770478701 43630 e9fa012910491fe5ae08a72c3c2997a7 ""
   "/usr/local/texlive/2026/texmf-var/web2c/euptex/uplatex.fmt" 1779863856 3654273 bc37f057c8d4fad3987b296d5372254c ""
   "/usr/local/texlive/2026/texmf.cnf" 1779863786.03173 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "ex03.aux" 1783491818.66152 1873 fbf80b5af252065b4470f5346a3205bb "latex"
+  "ex03.aux" 1783578404.85148 1873 fbf80b5af252065b4470f5346a3205bb "latex"
   "ex03.f90" 1783490222.07705 804 237c9f0f23c77c043e6b5b87a9318eb1 ""
   "ex03case1.png" 1783490469.40832 13812 50e6eecbafabdb3ee7f4e6433bb2915d ""
   "ex03case2.png" 1783490481.28961 11889 23c6e16235f0e2078ff7e25dbe31c3ef ""
